@@ -5,6 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.RawQuery;
 import androidx.room.Update;
 
 //Dao注解用来注解操作数据库的类,可用于接口或者抽象类
@@ -22,6 +23,8 @@ public interface CacheDao {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     int update(Cache cache);
+
+//    @RawQuery
 
 
 }
