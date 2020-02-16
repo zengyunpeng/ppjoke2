@@ -5,8 +5,10 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
 import androidx.arch.core.executor.ArchTaskExecutor;
 
+import com.teemo.libcommon.utils.DebugLog;
 import com.teemo.libnetwork.cache.Cache;
 
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +25,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public abstract class Request<T, R> implements Cloneable{
+public abstract class Request<T, R extends Request> implements Cloneable {
     protected String mUrl;
     protected HashMap<String, String> headers = new HashMap<>();
     protected HashMap<String, Object> params = new HashMap<>();
@@ -169,7 +171,8 @@ public abstract class Request<T, R> implements Cloneable{
         ApiResponse<T> result = new ApiResponse<>();
         Convert convert = ApiService.sConvert;
         try {
-            String content = response.body().toString();
+            String content = response.body() == null ? "" : new String(response.body().bytes());
+            DebugLog.i("content: " + content);
             if (successful) {
                 if (callBack != null) {
                     ParameterizedType type = (ParameterizedType) callBack.getClass().getGenericSuperclass();//获取泛型的实际类型
@@ -225,6 +228,12 @@ public abstract class Request<T, R> implements Cloneable{
     public R responseType(Class clazz) {
         mClazz = clazz;
         return (R) this;
+    }
+
+    @NonNull
+    @Override
+    public Request clone() throws CloneNotSupportedException {
+        return (Request<T, R>) super.clone();
     }
 
 }

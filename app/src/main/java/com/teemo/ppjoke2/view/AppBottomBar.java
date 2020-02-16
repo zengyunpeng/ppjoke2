@@ -51,6 +51,7 @@ public class AppBottomBar extends BottomNavigationView {
         setItemTextColor(colorStateList);
         setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
 //        setSelectedItemId(bottomBar.get)
+        //数据填充
         for (int i = 0; i < tabs.size(); i++) {
             BottomBar.TabsBean tabsBean = tabs.get(i);
             Log.i("tt", "!tabsBean.isEnable(): " + !tabsBean.isEnable());
@@ -66,7 +67,7 @@ public class AppBottomBar extends BottomNavigationView {
             MenuItem menuItem = getMenu().add(0, id, tabsBean.getIndex(), tabsBean.getTitle());
             menuItem.setIcon(sIcons[tabsBean.getIndex()]);
         }
-
+        //界面渲染
         for (int i = 0; i < tabs.size(); i++) {
             BottomBar.TabsBean tabsBean = tabs.get(i);
             int iconSize = dp2px(tabsBean.getSize());

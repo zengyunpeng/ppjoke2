@@ -10,6 +10,11 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    dataBinding{
+        enabled=true
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -37,6 +42,8 @@ dependencies {
     annotationProcessor project(":libnavcompiler")
 
     implementation project(path: ':libnetwork')
+
+    implementation files('libs/open_sdk_r6140_lite.jar')
 
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.1'

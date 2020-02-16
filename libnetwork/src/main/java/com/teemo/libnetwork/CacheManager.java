@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 
-class CacheManager {
+public class CacheManager {
 
     public static <T> void save(String key, T body) {
         Cache cache = new Cache();
@@ -80,4 +80,14 @@ class CacheManager {
         return baos.toByteArray();
 //        return new byte[0];
     }
+
+    public static <T> void delete(String key, T body) {
+        Cache cache = new Cache();
+        cache.key = key;
+        cache.data = toByteArray(body);
+        CacheDataBase.getDataBase().getCacheDao().delete(cache);
+    }
+
 }
+
+

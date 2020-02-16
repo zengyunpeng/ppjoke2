@@ -21,6 +21,11 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility "1.8"
+        targetCompatibility "1.8"
+    }
+
 }
 
 dependencies {
@@ -30,4 +35,22 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //图片加载
+    //图片加载
+    api 'com.github.bumptech.glide:glide:4.9.0'
+    api 'jp.wasabeef:glide-transformations:4.0.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //视频播放组件
+    api 'com.google.android.exoplayer:exoplayer-core:2.10.4'
+    api 'com.google.android.exoplayer:exoplayer-dash:2.10.4'
+    api 'com.google.android.exoplayer:exoplayer-ui:2.10.4'
+
+    //paging分页组件
+    api 'androidx.paging:paging-runtime:2.1.0'
+
+    //页面刷新组件
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
 }

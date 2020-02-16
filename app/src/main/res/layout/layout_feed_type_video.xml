@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="feed"
+            type="Feed" />
+
+        <import type="com.teemo.ppjoke2.model.Feed"></import>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_10">
+
+
+        <include
+            layout="@layout/layout_feed_author"
+            app:user="@{feed.author}"></include>
+
+        <include
+            layout="@layout/layout_feed_text"
+            app:feedText="@{feed.feeds_text}"
+            app:lines="@{3}"></include>
+
+
+        <!--   视频区域-->
+        <com.teemo.ppjoke2.view.ListPlayerView
+            android:id="@+id/list_player_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"></com.teemo.ppjoke2.view.ListPlayerView>
+
+
+        <include
+            layout="@layout/layout_feed_tag"
+            app:tagText="@{feed.activityText}"></include>
+
+        <include
+            layout="@layout/layout_feed_top_comment"
+            app:comment="@{feed.topComment}"></include>
+
+        <include
+            android:id="@+id/interaction_binding"
+            layout="@layout/layout_feed_interaction"
+            app:feed="@{feed}"></include>
+    </LinearLayout>
+</layout>
